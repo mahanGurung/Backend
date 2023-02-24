@@ -110,6 +110,29 @@ function checkIfAdmin($token)
         $count = mysqli_num_rows($result);
         if ($count > 0) {
             $user = mysqli_fetch_assoc($result);
+            if ($user['role'] == 'admin') {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
+function checkIfMerchant($token)
+{
+    $userId=checkIdValidUser($token);
+    if($userId!=null){
+        global $con;
+        $check_merchant = "SELECT * FROM users WHERE User_Id = '$userId'";
+        $result = mysqli_query($con, $check_merchant);
+        $count = mysqli_num_rows($result);
+        if ($count > 0) {
+            $user = mysqli_fetch_assoc($result);
             if ($user['role'] == 'merchant') {
                 return true;
             } else {
