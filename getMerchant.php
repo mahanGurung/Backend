@@ -13,7 +13,7 @@ include 'helper_functions/authentication_functions.php';
  }
 
  $list = array();
- $merchant = "SELECT * FROM users where role='merchant'";
+ $merchant = "SELECT merchant.Merchant_ID, users.username as merchantName FROM merchant join users on merchant.User_Id = users.User_Id";
  $result = mysqli_query($con, $merchant);
 
 if ($result) {
