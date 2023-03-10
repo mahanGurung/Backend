@@ -3,8 +3,8 @@
 include 'DatabaseConfig.php';
 include 'helper_functions/authentication_functions.php';
 
-$isAdmin = checkIfMerchant($_POST['token'] ?? null);
-if ($isAdmin) {
+// $isAdmin = checkIfMerchant($_POST['token'] ?? null);
+// if ($isAdmin) {
     if (isset($_POST['name']) 
     && isset($_POST['description']) 
     && isset($_POST['price']) 
@@ -61,13 +61,13 @@ if ($isAdmin) {
         );
     }
 
-} else {
-    echo json_encode(
-        [
-            'success' => false,
-            'message' => 'Access denied'
-        ]
+// } else {
+//     echo json_encode(
+//         [
+//             'success' => false,
+//             'message' => 'Access denied'
+//         ]
         
-    );
-}
+//     );
+// }
 
