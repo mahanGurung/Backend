@@ -1,9 +1,9 @@
 <?php
  //Define your Server host name here.
- $HostName = "localhost:3307";
+ $HostName = "localhost:3306";
  
  //Define your MySQL Database Name here.
- $DatabaseName = "hajur ko doctor";
+ $DatabaseName = "hajur_ko_doctor";
  
  //Define your Database User Name here.
  $HostUser = "root";
