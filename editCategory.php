@@ -20,13 +20,13 @@
                 if ($image_ext == "jpg" || $image_ext == "png" || $image_ext == "jpeg") {
                     if (move_uploaded_file($image_tmp, $image_path)) {
                         //inserting data into database
-                        $sql = "UPDATE categories SET name='$name',image='$image_path' WHERE id='$id'";
+                        $sql = "UPDATE categories SET name='$name',image='$image_path' WHERE category_id='$id'";
                         $query = mysqli_query($con, $sql);
                         if ($query) {
                             $data=['success'=>true, 'message'=>'Category updated successfully.'];
                             echo json_encode($data);
                         } else {
-                            $data=['success'=>false, 'message'=>'Something went wrong.'];
+                            $data=['success'=>false, 'message'=>'Something went wrong.1'];
                             echo json_encode($data);
                         }
                     } else {
