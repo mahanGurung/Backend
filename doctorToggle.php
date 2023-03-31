@@ -14,7 +14,7 @@ if (isset($_POST['Id']) && isset($_POST['approved'])) {//Form was submitted
     echo json_encode([$approved = 'approved']);
 }
 if ($approved) {//approved = 1 (on)
-    $data=['success'=>true, 'message'=>'Category added successfully.'];
+    $data=['success'=>true, 'message'=>'D added successfully.'];
     echo json_encode($data);
 } else {
     $data=['success'=>false, 'message'=>'Something went wrong while adding doctor. Please try again.'];

@@ -1,42 +1,14 @@
 <?php
 
-// include 'DatabaseConfig.php';
-// include 'helper_functions/authentication_functions.php';
-// //get categories from the database
-//  $categories = "SELECT * FROM users where role='merchant'";
-//     $result = mysqli_query($con, $categories);
-//     if ($result) {
-//         $data = [];
-//         while ($row = mysqli_fetch_assoc($result)) {
-//             $data[] = $row;
-//         }
-//         echo json_encode(
-//             [
-//                 'success' => true,
-//                 'data' => $data,
-//                 'message' => "Mercahnts fetched successfully"
-//             ]
-//         );
-//     } else {
-//         echo json_encode(
-//             [
-//                 'success' => false,
-//                 'message' => 'Error fetching Merchants'
-//             ]
-//         );
-//     }
-
-
-
 include 'DatabaseConfig.php';
 include 'helper_functions/authentication_functions.php';
-//get sql from the database
- $sql = "select User_Id from users where username='Mahan'";
-    $query = mysqli_query($con, $sql);
-    if ($query) {
-        $data = '';
-        while ($row = mysqli_fetch_assoc($query)) {
-           $data = $row['User_Id'];
+//get categories from the database
+ $categories = "SELECT * FROM users where role='merchant'";
+    $result = mysqli_query($con, $categories);
+    if ($result) {
+        $data = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
         }
         echo json_encode(
             [
@@ -53,3 +25,31 @@ include 'helper_functions/authentication_functions.php';
             ]
         );
     }
+
+
+
+// include 'DatabaseConfig.php';
+// include 'helper_functions/authentication_functions.php';
+// //get sql from the database
+//  $sql = "select User_Id from users where username='Mahan'";
+//     $query = mysqli_query($con, $sql);
+//     if ($query) {
+//         $data = '';
+//         while ($row = mysqli_fetch_assoc($query)) {
+//            $data = $row['User_Id'];
+//         }
+//         echo json_encode(
+//             [
+//                 'success' => true,
+//                 'data' => $data,
+//                 'message' => "Mercahnts fetched successfully"
+//             ]
+//         );
+//     } else {
+//         echo json_encode(
+//             [
+//                 'success' => false,
+//                 'message' => 'Error fetching Merchants'
+//             ]
+//         );
+//     }
