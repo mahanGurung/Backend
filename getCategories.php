@@ -12,15 +12,15 @@ include 'helper_functions/authentication_functions.php';
     );
  }
 
- $list = array();
+ 
  $categories = "SELECT category_id, name FROM categories";
  $result = mysqli_query($con, $categories);
 //  $result = $con->query("SELECT category_id, name FROM categories");
 if ($result) {
-    
+    $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $list[]  = $row;
+        $data[]  = $row;
     }
 
-    echo json_encode($list);
+    echo json_encode($data);
  }
