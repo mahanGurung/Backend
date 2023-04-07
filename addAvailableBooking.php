@@ -10,38 +10,51 @@ include 'helper_functions/authentication_functions.php';
     && isset($_POST['is_daily']) 
     // && isset($_POST['Date'])
     && isset($_POST['show_on_weekends'])
-    && isset($_POST['Price']) 
-    && isset($_POST['is_visible']) 
+     
+     
     && isset($_POST['merchant_id']) 
+    && isset($_POST['quantity'])
     ) {
         $doctor_id = $_POST['doctor_id'];
-        $time = date("H:i");
         $is_daily= $_POST['is_daily'];
         $Date = date('Y-m-d');
         $show_on_weekends = $_POST['show_on_weekends'];
-        $Price = $_POST['Price'];
-        $is_visible = $_POST['is_visible'];
+        $quantity = $_POST['quantity'];
+    
+        
         $merchant_id = $_POST['merchant_id'];
          //getimage
         
-    
+         $check_name = "SELECT * FROM availables_bookings WHERE doctor_id = '$doctor_id' AND Date = '$Date'";
+         $result = mysqli_query($con, $check_name);
+         $count = mysqli_num_rows($result);
+         if ($count > 0) {
+             echo json_encode(
+                 [
+                     'success' => false,
+                     'message' => 'Booking already exits'
+                 ]
+                 ); 
+            }else {
 
-      //upload image
+                //upload image
+                
+                          //   $sql = "INSERT INTO availables_bookings (doctor_id, is_daily, Date, show_on_weekends, quantity, merchant_id) VALUES ('$doctor_id', '$is_daily','$Date', '$show_on_weekends', '$quantity','$merchant_id')";
+                          //   $query = mysqli_query($con, $sql);
+                          //   if ($query) {
+                          //     $data=['success'=>true, 'message'=>'Doctor added successfully'];
+                          //     echo json_encode($data);
+                          //     //  getProducts("Doctor added successfully.");
+                          //   } else {
+                          //       $data=['success'=>false, 'message'=>'Something went wrong.'];
+                          //       echo json_encode($data);
+                          //   }
+                       
+                          // }
+                          addbooking($doctor_id, $is_daily, $Date, $show_on_weekends,$quantity,$merchant_id);
+                       }
       
-                  $sql = "INSERT INTO availables_bookings (doctor_id, time, is_daily, Date, show_on_weekends, Price, is_visible, merchant_id) VALUES ('$doctor_id', '$time', '$is_daily','$Date', '$show_on_weekends', '$Price', '$is_visible', '$merchant_id')";
-                  $query = mysqli_query($con, $sql);
-                  if ($query) {
-                    $data=['success'=>true, 'message'=>'Doctor added successfully'];
-                    echo json_encode($data);
-                    //  getProducts("Doctor added successfully.");
-                  } else {
-                      $data=['success'=>false, 'message'=>'Something went wrong.'];
-                      echo json_encode($data);
-                  }
-             
-
-      
-    } else {
+                     } else {
         echo json_encode(
             [
                 'success' => false,

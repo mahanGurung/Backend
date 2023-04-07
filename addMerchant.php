@@ -41,7 +41,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_FILES['ima
     //     $data1 = '';
     //     while ($row1 = mysqli_fetch_assoc($query1)) {
     //         $data1 = $row1['User_Id'];
-        // }
+    //     }
         
     addMerchant($username, $password, $image, $image_tmp, $image_size, $image_ext, $image_path);
     }

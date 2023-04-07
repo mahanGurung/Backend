@@ -31,13 +31,7 @@ function addMerchant($username, $password, $image, $image_tmp, $image_size, $ima
     $insert_user = "INSERT INTO users (username, password, role) VALUES ('$username', '$encrypted_password', 'merchant')";
     $result = mysqli_query($con, $insert_user);
     if ($result) {
-        echo json_encode(
-            [
-                'success' => true,
-                'message' => 'Merchant created successfully'
-            ]
-            
-        );
+        
         
         $sql1 = "select User_Id from users where username='$username'";
         $query1 = mysqli_query($con, $sql1);
@@ -71,7 +65,7 @@ function addMerchant($username, $password, $image, $image_tmp, $image_size, $ima
                         $sql = "INSERT INTO merchant (user_id, image) VALUES ('$data1', '$image_path')";
                         $query = mysqli_query($con, $sql);
                         if ($query) {
-                            $data=['success'=>true, 'message'=>'Merchant added successfully.'];
+                            $data=['success'=>true, 'message'=>'Merchant created and added successfully.'];
                             echo json_encode($data);
                         } else {
                             $data=['success'=>false, 'message'=>'Something went wrong while adding merchant 1. Please try again.'];
@@ -202,6 +196,23 @@ function checkIfMerchant($token)
     }else{
         return false;
     }
+}
+
+function addbooking($doctor_id, $is_daily, $Date, $show_on_weekends, $quantity,$merchant_id)
+{
+    global $con;
+    $sql = "INSERT INTO availables_bookings (doctor_id, is_daily, Date, show_on_weekends, quantity, merchant_id) VALUES ('$doctor_id', '$is_daily','$Date', '$show_on_weekends', '$quantity','$merchant_id')";
+    $query = mysqli_query($con, $sql);
+    if ($query) {
+      $data=['success'=>true, 'message'=>'Doctor added successfully'];
+      echo json_encode($data);
+      //  getProducts("Doctor added successfully.");
+    } else {
+        $data=['success'=>false, 'message'=>'Something went wrong.'];
+        echo json_encode($data);
+    }
+
+  
 }
 
 
