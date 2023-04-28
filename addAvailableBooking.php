@@ -10,7 +10,7 @@ include 'helper_functions/authentication_functions.php';
     && isset($_POST['is_daily']) 
     // && isset($_POST['Date'])
     && isset($_POST['show_on_weekends'])
-    && isset($_POST['is_visible']) 
+    && isset($_POST['is_visible'])
      
     && isset($_POST['merchantId']) 
     && isset($_POST['quantity'])
